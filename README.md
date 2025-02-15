@@ -19,6 +19,20 @@ This project implements **Vanna-Volga pricing for FX barrier options**, incorpor
 
 ## 📌 Project Structure
 
+Vanna-Volga-FX-Barrier-Option-Pricing/ │── notebooks/
+│ ├── 01_black_scholes_basics.ipynb │ ├── 02_barrier_options.ipynb │ ├── 03_vanna_volga_method.ipynb │ ├── 04_visualization_results.ipynb │ ├── 05_vanna_volga_barrier_method.ipynb │ ├── 06_vanna_volga_barrier_market.ipynb │── src/
+│ ├── init.py
+│ ├── black_scholes.py
+│ ├── barrier_options.py
+│ ├── vanna_volga.py
+│ ├── vanna_volga_barrier.py
+│ ├── vanna_volga_barrier_with_market.py │ ├── utils.py
+│── tests/
+│── market_vol_data.csv
+│── generate_market_data.py
+│── .gitignore
+│── README.md
+│── requirements.txt
 
 ---
 
