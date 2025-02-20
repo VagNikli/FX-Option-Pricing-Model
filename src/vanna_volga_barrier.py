@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.stats import norm
 from black_scholes import BlackScholes
-from barrier_options import FXBarrierOption
+from src.binomial_barrier_option import FXBarrierOption
 from vanna_volga import VannaVolga
 
 class VannaVolgaBarrier(FXBarrierOption):

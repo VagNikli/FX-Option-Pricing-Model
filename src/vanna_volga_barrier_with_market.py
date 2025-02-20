@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 from black_scholes import BlackScholes
-from barrier_options import FXBarrierOption
+from src.binomial_barrier_option import FXBarrierOption
 from vanna_volga import VannaVolga
 
 class VannaVolgaBarrierMarket(FXBarrierOption):
