@@ -19,3 +19,29 @@ This project provides an in-depth **FX option pricing framework**, implementing 
 
 ## **Repository Structure**
 Vanna-Volga-FX-Barrier-Option-Pricing/ │── notebooks/ # Jupyter notebooks for tests and visualization │ ├── 01_black_scholes_basics.ipynb │ ├── 02_barrier_options.ipynb │ ├── 03_vanna_volga_method.ipynb │ │── src/ # Python modules for different models │ ├── black_scholes.py │ ├── binomial_barrier_option.py │ ├── vanna_volga.py │ ├── vanna_volga_barrier.py │ ├── synthetic_market_data.py │ ├── main_script.py │ ├── utils.py │ │── fx_volatility_surface.png # Sample FX volatility surface visualization │── README.md # Project documentation │── requirements.txt # Required Python dependencies │── .gitignore # Git ignored files
+
+---
+
+## ** Implemented Models**
+### **1️. Black-Scholes Model**
+The **Black-Scholes model** is used for **pricing European vanilla options** in the FX market. 
+
+**Implemented Features:**
+- Computes **call and put option prices**.
+- Computes **Greeks (Delta)**.
+- Plots **option price vs. strike price**.
+
+🔹 **Limitations:**
+- Does not handle **barrier options**.
+- Assumes **constant volatility**, which is unrealistic for FX markets.
+
+🔹 **Run the Black-Scholes Model:**
+```python
+from black_scholes import BlackScholes
+
+bs_model = BlackScholes(spot_price=1.20, strike_price=1.10, time_to_maturity=1, 
+                         volatility=0.2, domestic_rate=0.05, foreign_rate=0.02)
+
+call_price = bs_model.calculate_vanilla_price("call")
+print(f"Call Option Price: {call_price:.4f}")
+
