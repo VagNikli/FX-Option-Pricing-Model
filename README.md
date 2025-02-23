@@ -41,7 +41,7 @@ Each model in this project operates under specific assumptions:
 ✔ Requires **synthetic or market-implied volatilities**, meaning **real market quotes improve accuracy**.  
 
 
-## ** Implemented Models**
+## **Implemented Models**
 ### **1️. Black-Scholes Model**
 The **Black-Scholes model** is used for **pricing European vanilla options** in the FX market. 
 
@@ -128,12 +128,9 @@ The **synthetic market data module** simulates **realistic FX implied volatility
 - Compare **Vanna-Volga vs. Local Volatility models** for **FX options**.
 
 
-## ** References & Further Reading**
+## **References & Further Reading**
 This project is based on well-established **financial models** and **research papers**. Below are some useful references:
 
-- **Black-Scholes Model**:  
-  Black, F., & Scholes, M. (1973). "The Pricing of Options and Corporate Liabilities." *Journal of Political Economy*.
-  
 - **Binomial Tree Model**:  
   Cox, J. C., Ross, S. A., & Rubinstein, M. (1979). "Option Pricing: A Simplified Approach." *Journal of Financial Economics*.
 
