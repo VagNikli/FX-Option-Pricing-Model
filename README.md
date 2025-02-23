@@ -37,8 +37,7 @@ The **Black-Scholes model** is used for **pricing European vanilla options** in 
 
 
 ### **2️. Binomial Tree for FX Barrier Options**
-    Barrier options **knock-in** or **knock-out** when the price crosses a defined level. The **binomial tree method** is used to 
-    accurately price these options.
+Barrier options are knock-in or knock-out when the price crosses a defined level. The binomial tree method accurately prices these options.
 
 **Implemented Features:**
 - Supports **all types of barrier options**.
@@ -48,5 +47,77 @@ The **Black-Scholes model** is used for **pricing European vanilla options** in 
 🔹 **Limitations:**
 - **Computationally expensive** for large step sizes.
 - Assumes **lognormal price distribution**, which may not capture FX market behavior.
+
+
+## **3️. Vanna-Volga Pricing for FX Options**
+The **Vanna-Volga model** is a **market-consistent approach** to pricing FX options by incorporating **market-implied volatility corrections** beyond Black-Scholes.
+
+### **Implemented Features:**
+- Computes **Black-Scholes price** for vanilla options.
+- Adjusts prices using **Vanna-Volga corrections** to account for **market skew**.
+- Supports **FX pairs with SABR-implied volatilities**.
+
+### **Limitations:**
+- Uses **fixed Vanna & Volga weights (α, β)** instead of **dynamically calibrated values**.
+- No **real FX market quotes**; relies on **simulated SABR volatilities**.
+
+## **Synthetic Market Data Simulation**
+The **synthetic market data module** simulates **realistic FX implied volatility surfaces** using the **SABR model**.
+
+### **Implemented Features:**
+- Generates **FX volatility smiles** using the **SABR model**.
+- Simulates **realistic forward and implied volatility curves**.
+- Supports **various FX pairs (EUR/USD, GBP/USD, USD/JPY, etc.)**.
+
+### **Limitations:**
+- Does not use **real market quotes** (relies on **simulated volatilities**).
+- Assumes **lognormal distribution**, which may **not fully capture FX market behavior**.
+
+---
+
+## **Visualizations**
+### **Implemented Visualizations**
+- **FX Volatility Smile** (SABR Model).
+- **Black-Scholes vs. Vanna-Volga Pricing**.
+- **Binomial Tree for Barrier Options**.
+
+### **Example Graphs**
+- **FX Volatility Smile:** `fx_volatility_surface.png`
+- **Binomial Tree Visualization**.
+- **Comparison of Pricing Models for EUR/USD, GBP/USD, USD/JPY**.
+
+---
+
+## **Limitations**
+### **🔹 No Real FX Option Quotes:**
+- The model simulates **volatility surfaces using SABR**, but **real market quotes** would provide **more precise pricing**.
+
+### **🔹 Fixed Vanna & Volga Weights:**
+- The **Vanna-Volga model** currently **uses fixed weights (α, β)** instead of **dynamically calibrated values**.
+
+### **🔹 Performance Issues for Large Steps in Binomial Tree:**
+- **Large binomial steps** increase **computation time**, making it **slower for high precision pricing**.
+
+---
+
+## **Future Research & Enhancements**
+### **🔹 Dynamic Calibration of Vanna-Volga Weights**
+- Instead of **fixed α and β**, **calibrate weights dynamically** based on **market data**.
+
+### **🔹 Integration with Real FX Market Data**
+- Retrieve **live implied volatility quotes** from **Bloomberg or Reuters**.
+
+### **🔹 Alternative Models (Jump-Diffusion, Heston, Local Volatility)**
+- Compare **Vanna-Volga vs. Local Volatility models** for **FX options**.
+
+
+
+
+
+
+
+
+
+
 
 
