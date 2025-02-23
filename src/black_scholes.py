@@ -46,7 +46,7 @@ class BlackScholes:
         
         return price
 
-    def delta(self, option_type='call'): #Function to calculate the delta of the Vanilla option
+    def delta(self, option_type='call'): # Function to calculate the delta of the Vanilla option
         """
         Computes the delta of a European option.
 

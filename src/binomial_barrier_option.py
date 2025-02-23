@@ -7,8 +7,7 @@ from black_scholes import BlackScholes
 class BinomialBarrierOption:
     def __init__(self, spot_price, strike_price, time_to_maturity, volatility, domestic_rate, foreign_rate, 
                  barrier_level, barrier_type, option_type="call", steps=100):
-        """
-        Parameters:
+        """Parameters:
         spot_price (float): Initial stock price (S0).
         strike_price (float): Strike price (K).
         time_to_maturity (float): Time to expiration in years (T).
@@ -32,15 +31,15 @@ class BinomialBarrierOption:
         self.steps = steps
 
         if barrier_type not in ["up-in", "up-out", "down-in", "down-out"]:
-            raise ValueError("Invalid barrier type. Choose 'up-in', 'up-out', 'down-in', or 'down-out'.") # Error Handling
+            raise ValueError("Invalid barrier type. Choose 'up-in', 'up-out', 'down-in', or 'down-out'.") # Error Handling for different barrier type
 
     def price(self):
         """Computes the price of the barrier option using the binomial tree method."""
-        dt = self.T / self.steps
+        dt = self.T / self.steps 
         u = np.exp(self.sigma * np.sqrt(dt))  # Probability going up 
         d = 1 / u  # Probability going down 
         q = (np.exp((self.rd - self.rf) * dt) - d) / (u - d)  # Risk neutral probability
-        discount = np.exp(-self.rd * dt)
+        discount = np.exp(-self.rd * dt) # Discount factor
 
         # Initialize  price tree
         stock_tree = np.zeros((self.steps + 1, self.steps + 1))
