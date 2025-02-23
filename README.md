@@ -1,8 +1,8 @@
 # **FX Barrier Option Pricing**
-A detailed Implementation of Black-Scholes, Binomial Tree, and Vanna-Volga Methods for FX Option Pricing
+A detailed Implementation of Black-Scholes, Binomial Tree, and Vanna-Volga Methods for FX Option Pricing.
 
 ## **Project Overview**
-This project provides an in-depth **FX option pricing framework**, implementing **vanilla options, barrier options, and Vanna-Volga pricing adjustments**. It includes:
+This project provides an in-depth **FX options pricing framework**, implementing **vanilla options, barrier options, and Vanna-Volga pricing adjustments**. It includes:
 
 - **Black-Scholes Model** for vanilla FX options.
 - **Binomial Tree Model** for pricing FX barrier options.
