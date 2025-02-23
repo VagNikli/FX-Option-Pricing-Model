@@ -10,7 +10,7 @@ This project provides an in-depth **FX options pricing framework**, implementing
 - **Synthetic Market Data Generator** using the **SABR model** to simulate realistic FX volatility surfaces.
 
 **Key Features:**
-- Mathematical foundation** for all pricing models.
+- Mathematical foundation for all pricing models.
 - Python-based efficient implementations.
 - Visualizations and comparison of different models.
 - Custom market data simulation to mimic real FX volatility behavior.
@@ -21,6 +21,25 @@ This project provides an in-depth **FX options pricing framework**, implementing
 Vanna-Volga-FX-Barrier-Option-Pricing/ │── notebooks/ # Jupyter notebooks for tests and visualization │ ├── 01_black_scholes_basics.ipynb │ ├── 02_barrier_options.ipynb │ ├── 03_vanna_volga_method.ipynb │ │── src/ # Python modules for different models │ ├── black_scholes.py │ ├── binomial_barrier_option.py │ ├── vanna_volga.py │ ├── vanna_volga_barrier.py │ ├── synthetic_market_data.py │ ├── main_script.py │ ├── utils.py │ │── fx_volatility_surface.png # Sample FX volatility surface visualization │── README.md # Project documentation │── requirements.txt # Required Python dependencies │── .gitignore # Git ignored files
 
 ---
+
+## **Model Assumptions**
+Each model in this project operates under specific assumptions:
+
+### **1️. Black-Scholes Model**
+✔ Assumes **constant volatility**, which is unrealistic in real-world FX markets.  
+✔ Uses a **lognormal price distribution**, meaning prices follow a geometric Brownian motion.  
+✔ Suitable only for **European-style options** (cannot handle early exercise or barriers).  
+
+### **2️. Binomial Tree for FX Barrier Options**
+✔ Models the **price evolution in discrete time steps**, allowing more flexibility.  
+✔ Can handle **American and exotic options** (e.g., knock-in/knock-out barrier options).  
+✔ Assumes **lognormal distribution at each step**, which may not perfectly match FX market behavior.  
+
+### **3️. Vanna-Volga Pricing for FX Options**
+✔ Adjusts **Black-Scholes pricing** using **market-implied volatility corrections**.  
+✔ Assumes **fixed volatility weights** instead of dynamically calibrated values.  
+✔ Requires **synthetic or market-implied volatilities**, meaning **real market quotes improve accuracy**.  
+
 
 ## ** Implemented Models**
 ### **1️. Black-Scholes Model**
@@ -73,8 +92,6 @@ The **synthetic market data module** simulates **realistic FX implied volatility
 - Does not use **real market quotes** (relies on **simulated volatilities**).
 - Assumes **lognormal distribution**, which may **not fully capture FX market behavior**.
 
----
-
 ## **Visualizations**
 ### **Implemented Visualizations**
 - **FX Volatility Smile** (SABR Model).
@@ -111,10 +128,27 @@ The **synthetic market data module** simulates **realistic FX implied volatility
 - Compare **Vanna-Volga vs. Local Volatility models** for **FX options**.
 
 
+## ** References & Further Reading**
+This project is based on well-established **financial models** and **research papers**. Below are some useful references:
+
+- **Black-Scholes Model**:  
+  Black, F., & Scholes, M. (1973). "The Pricing of Options and Corporate Liabilities." *Journal of Political Economy*.
+  
+- **Binomial Tree Model**:  
+  Cox, J. C., Ross, S. A., & Rubinstein, M. (1979). "Option Pricing: A Simplified Approach." *Journal of Financial Economics*.
+
+- **Vanna-Volga Method**:  
+  Castagna, A., & Mercurio, F. (2007). "Consistent Pricing of FX Options with the Vanna-Volga Method." *International Journal of Theoretical and Applied Finance*.
+
+- **SABR Model for Implied Volatility**:  
+  Hagan, P. S., Kumar, D., Lesniewski, A. S., & Woodward, D. E. (2002). "Managing Smile Risk." *Wilmott Magazine*.
 
 
+## **Contact Information**
+For any inquiries or contributions, feel free to reach out:
 
-
+👤 **Author**: Evangelos Niklitsiotis  
+📧 **Email**: vagelisnikli@gmail.com  
 
 
 
