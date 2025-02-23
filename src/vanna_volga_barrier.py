@@ -9,8 +9,7 @@ from black_scholes import BlackScholes
 class VannaVolga:
     def __init__(self, spot_price, strike_price, time_to_maturity, domestic_rate, foreign_rate, 
                  alpha=0.015, beta=0.5, rho=-0.3, nu=0.2):
-        """ 
-        Parameters:
+        """Parameters:
         spot_price (float): Current FX spot price (e.g., EUR/USD ~ 1.20).
         strike_price (float): Strike price of the option.
         time_to_maturity (float): Time to expiration in years.

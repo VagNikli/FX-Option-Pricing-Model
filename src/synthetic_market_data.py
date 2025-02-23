@@ -4,11 +4,10 @@ import pandas as pd
 from scipy.optimize import minimize
 import matplotlib.pyplot as plt
 
+# Simulates an FX implied volatility surface using the SABR model
 class MarketDataSimulation:
     def __init__(self, forward_price, alpha, beta, rho, nu):
-        """
-        Simulates an FX implied volatility surface using the SABR model
-        Parameters:
+        """Parameters:
         forward_price (float): FX spot price (e.g., EUR/USD ~ 1.20).
         alpha (float): SABR model volatility of volatility parameter.
         beta (float): SABR model skew parameter (controls dependency on forward price).
