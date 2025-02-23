@@ -10,10 +10,10 @@ This project provides an in-depth **FX options pricing framework**, implementing
 - **Synthetic Market Data Generator** using the **SABR model** to simulate realistic FX volatility surfaces.
 
 **Key Features:**
-- **Mathematical foundation** for all pricing models.
-- **Python-based efficient implementations**.
-- **Visualizations and comparison of different models**.
-- **Custom market data simulation** to mimic real FX volatility behavior.
+- Mathematical foundation** for all pricing models.
+- Python-based efficient implementations.
+- Visualizations and comparison of different models.
+- Custom market data simulation to mimic real FX volatility behavior.
 
 ---
 
