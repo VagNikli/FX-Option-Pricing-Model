@@ -45,3 +45,24 @@ bs_model = BlackScholes(spot_price=1.20, strike_price=1.10, time_to_maturity=1,
 call_price = bs_model.calculate_vanilla_price("call")
 print(f"Call Option Price: {call_price:.4f}")
 
+### **2️. Binomial Tree for FX Barrier Options**
+Barrier options **knock-in** or **knock-out** when the price crosses a defined level. The **binomial tree method** is used to accurately price these options.
+
+**Implemented Features:**
+- Supports **all types of barrier options**.
+- Allows **custom number of steps for accuracy**.
+- Visualizes the **binomial tree structure**.
+
+🔹 **Limitations:**
+- **Computationally expensive** for large step sizes.
+- Assumes **lognormal price distribution**, which may not capture FX market behavior.
+
+🔹 **Run the Binomial Barrier Model:**
+```python
+from binomial_barrier_option import BinomialBarrierOption
+
+barrier_option = BinomialBarrierOption(spot_price=1.20, strike_price=1.10, time_to_maturity=1, 
+                                       volatility=0.2, domestic_rate=0.05, foreign_rate=0.02, 
+                                       barrier_level=1.10, barrier_type="down-out", option_type="call", steps=500)
+
+print(f"Barrier Option Price: {barrier_option.price():.4f}")
