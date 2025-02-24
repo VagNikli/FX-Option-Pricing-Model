@@ -28,24 +28,18 @@ The **Black-Scholes formula** is used to price European options:
 - $P = K e^{-r_d T} N(-d_2) - S_0 e^{-r_f T} N(-d_1)$
 
 where:
-
-$
-d_1 = \frac{\ln(S_0 / K) + (r_d - r_f + \frac{1}{2} \sigma^2) T}{\sigma \sqrt{T}}
-$
-
-$
-d_2 = d_1 - \sigma \sqrt{T}
-$
+$d_1 = \frac{\ln(S_0 / K) + (r_d - r_f + \frac{1}{2} \sigma^2) T}{\sigma \sqrt{T}}$
+$d_2 = d_1 - \sigma \sqrt{T}$
 
 where:  
-- $C, P $ = Call and Put option price  
-- $ S_0 $ = Spot price of the underlying asset  
+- $C, P$ = Call and Put option price  
+- $ S_0$ = Spot price of the underlying asset  
 - $K$ = Strike price  
-- $T $ = Time to expiration  
-- $ r_d $ = Domestic risk-free rate  
-- $r_f $ = Foreign risk-free rate  
-- $ \sigma $ = Volatility  
-- $ N(\cdot) $ = Cumulative normal distribution function  
+- $T$ = Time to expiration  
+- $r_d$ = Domestic risk-free rate  
+- $r_f$ = Foreign risk-free rate  
+- $\sigma$ = Volatility  
+- $N(\cdot)$ = Cumulative normal distribution function  
 
 
 
