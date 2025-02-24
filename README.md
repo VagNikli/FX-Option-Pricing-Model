@@ -73,21 +73,17 @@ For **knock-out options**, if at any step $S_t$ crosses the barrier $B$, the opt
 The **Vanna-Volga method** adjusts **Black-Scholes prices** by incorporating **market-implied volatility skews**.
 
 #### **Vanna and Volga Corrections**
-$
-\text{Vanna} = \frac{\partial^2 C}{\partial S \, \partial \sigma}
-$
+$\text{Vanna} = \frac{\partial^2 C}{\partial S \, \partial \sigma}$
 
 $\text{Volga} = \frac{\partial^2 C}{\partial \sigma^2}$
 
 Final **Vanna-Volga adjusted price**:
 
-$
-C_{VV} = C_{BS} + \alpha \cdot \text{Vanna} + \beta \cdot \text{Volga}
-$
+$C_{VV} = C_{BS} + \alpha \cdot \text{Vanna} + \beta \cdot \text{Volga}$
 
 where:
-- $ C_{BS} $ = Black-Scholes price  
-- $ \alpha, \beta $ = fixed weights  
+- $C_{BS}$ = Black-Scholes price  
+- $\alpha, \beta$ = fixed weights  
 - Vanna measures **sensitivity to volatility and spot price changes**.  
 - Volga measures **sensitivity to volatility shifts**.  
 
