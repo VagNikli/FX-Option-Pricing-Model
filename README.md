@@ -1,26 +1,113 @@
 # **FX Barrier Option Pricing**
-A detailed Implementation of Black-Scholes, Binomial Tree, and Vanna-Volga Methods for FX Option Pricing.
+A detailed implementation of **Black-Scholes, Binomial Tree, and Vanna-Volga Methods** for FX Option Pricing.
 
 ## **Project Overview**
 This project provides an in-depth **FX options pricing framework**, implementing **vanilla options, barrier options, and Vanna-Volga pricing adjustments**. It includes:
 
-- **Black-Scholes Model** for vanilla FX options.
-- **Binomial Tree Model** for pricing FX barrier options.
-- **Vanna-Volga Model** for incorporating **market-implied volatility corrections**.
+- **Black-Scholes Model** for **vanilla FX options**.
+- **Binomial Tree Model** for **pricing FX barrier options**.
+- **Vanna-Volga Model** for **market-implied volatility adjustments**.
 - **Synthetic Market Data Generator** using the **SABR model** to simulate realistic FX volatility surfaces.
 
-**Key Features:**
-- Mathematical foundation for all pricing models.
-- Python-based efficient implementations.
-- Visualizations and comparison of different models.
-- Custom market data simulation to mimic real FX volatility behavior.
+### **Key Features**
+✔ **Mathematical foundation** for all pricing models.  
+✔ **Python-based efficient implementations**.  
+✔ **Visualizations and comparison of different models**.  
+✔ **Custom market data simulation** to mimic real FX volatility behavior.  
 
 ---
 
-## **Repository Structure**
-Vanna-Volga-FX-Barrier-Option-Pricing/ │── notebooks/ # Jupyter notebooks for tests and visualization │ ├── 01_black_scholes_basics.ipynb │ ├── 02_barrier_options.ipynb │ ├── 03_vanna_volga_method.ipynb │ │── src/ # Python modules for different models │ ├── black_scholes.py │ ├── binomial_barrier_option.py │ ├── vanna_volga.py │ ├── vanna_volga_barrier.py │ ├── synthetic_market_data.py │ ├── main_script.py │ ├── utils.py │ │── fx_volatility_surface.png # Sample FX volatility surface visualization │── README.md # Project documentation │── requirements.txt # Required Python dependencies │── .gitignore # Git ignored files
+##**Mathematical Background**
+This project relies on well-established mathematical models for option pricing.
 
----
+### **1️. Black-Scholes Model**
+The **Black-Scholes formula** is used to price European options:
+
+$C = S_0 e^{-r_f T} N(d_1) - K e^{-r_d T} N(d_2)$
+
+$P = K e^{-r_d T} N(-d_2) - S_0 e^{-r_f T} N(-d_1)$
+
+where:
+
+$
+d_1 = \frac{\ln(S_0 / K) + (r_d - r_f + \frac{1}{2} \sigma^2) T}{\sigma \sqrt{T}}
+$
+
+$
+d_2 = d_1 - \sigma \sqrt{T}
+$
+
+where:  
+- $C, P $ = Call and Put option price  
+- $ S_0 $ = Spot price of the underlying asset  
+- $K$ = Strike price  
+- $T $ = Time to expiration  
+- $ r_d $ = Domestic risk-free rate  
+- $r_f $ = Foreign risk-free rate  
+- $ \sigma $ = Volatility  
+- $ N(\cdot) $ = Cumulative normal distribution function  
+
+
+
+### **2️. Binomial Tree for FX Barrier Options**
+The **binomial model** builds a **lattice** of possible price evolutions:
+
+- At each step, the price can **go up** $( u $) or **down** $(d$):
+
+$
+S_u = S_0 \cdot u, \quad S_d = S_0 \cdot d
+$
+
+- Risk-neutral probability:
+
+$
+q = \frac{e^{(r_d - r_f) \Delta t} - d}{u - d}
+$
+
+where:
+- $ \Delta t = \frac{T}{n} $ (time step per period)
+- $u = e^{\sigma \sqrt{\Delta t}} $
+- $ d = \frac{1}{u} $
+
+For **barrier options**, we apply the following conditions:
+- **Knock-In**: Becomes active if the barrier is reached.
+- **Knock-Out**: Becomes worthless if the barrier is breached.
+
+At expiration, payoffs are:
+
+$
+V_T = \max(S_T - K, 0) \quad \text{(for call)}
+$
+
+$
+V_T = \max(K - S_T, 0) \quad \text{(for put)}
+$
+
+For **knock-out options**, if at any step $ S_t $ crosses the barrier $ B $, the option value is set to **zero**.
+
+
+### **3️. Vanna-Volga Pricing for FX Options**
+The **Vanna-Volga method** adjusts **Black-Scholes prices** by incorporating **market-implied volatility skews**.
+
+#### **Vanna and Volga Corrections**
+$
+\text{Vanna} = \frac{\partial^2 C}{\partial S \, \partial \sigma}
+$
+
+$\text{Volga} = \frac{\partial^2 C}{\partial \sigma^2}$
+
+Final **Vanna-Volga adjusted price**:
+
+$
+C_{VV} = C_{BS} + \alpha \cdot \text{Vanna} + \beta \cdot \text{Volga}
+$
+
+where:
+- $ C_{BS} $ = Black-Scholes price  
+- $ \alpha, \beta $ = fixed weights  
+- Vanna measures **sensitivity to volatility and spot price changes**.  
+- Volga measures **sensitivity to volatility shifts**.  
+
 
 ## **Model Assumptions**
 Each model in this project operates under specific assumptions:
@@ -102,17 +189,16 @@ The **synthetic market data module** simulates **realistic FX implied volatility
 - **FX Volatility Smile:** `fx_volatility_surface.png`
 - **Binomial Tree Visualization**.
 - **Comparison of Pricing Models for EUR/USD, GBP/USD, USD/JPY**.
-
 ---
 
-## **Limitations**
-### **🔹 No Real FX Option Quotes:**
+## ⚠️**Limitations**
+### **🔹 No Real FX Option Quotes**
 - The model simulates **volatility surfaces using SABR**, but **real market quotes** would provide **more precise pricing**.
 
-### **🔹 Fixed Vanna & Volga Weights:**
+### **🔹 Fixed Vanna & Volga Weights**
 - The **Vanna-Volga model** currently **uses fixed weights (α, β)** instead of **dynamically calibrated values**.
 
-### **🔹 Performance Issues for Large Steps in Binomial Tree:**
+### **🔹 Performance Issues for Large Steps in Binomial Tree**
 - **Large binomial steps** increase **computation time**, making it **slower for high precision pricing**.
 
 ---
@@ -127,25 +213,16 @@ The **synthetic market data module** simulates **realistic FX implied volatility
 ### **🔹 Alternative Models (Jump-Diffusion, Heston, Local Volatility)**
 - Compare **Vanna-Volga vs. Local Volatility models** for **FX options**.
 
-
 ## **References & Further Reading**
-This project is based on well-established **financial models** and **research papers**. Below are some useful references:
+- **Black-Scholes Model**: Black, F., & Scholes, M. (1973). *The Pricing of Options and Corporate Liabilities*. *Journal of Political Economy*.  
+- **Binomial Tree Model**: Cox, J. C., Ross, S. A., & Rubinstein, M. (1979). *Journal of Financial Economics*.  
+- **Vanna-Volga Method**: Castagna, A., & Mercurio, F. (2007). *International Journal of Theoretical and Applied Finance*.  
+- **SABR Model for Implied Volatility**: Hagan, P. S., Kumar, D., Lesniewski, A. S., & Woodward, D. E. (2002). *Wilmott Magazine*.
 
-- **Binomial Tree Model**:  
-  Cox, J. C., Ross, S. A., & Rubinstein, M. (1979). "Option Pricing: A Simplified Approach." *Journal of Financial Economics*.
-
-- **Vanna-Volga Method**:  
-  Castagna, A., & Mercurio, F. (2007). "Consistent Pricing of FX Options with the Vanna-Volga Method." *International Journal of Theoretical and Applied Finance*.
-
-- **SABR Model for Implied Volatility**:  
-  Hagan, P. S., Kumar, D., Lesniewski, A. S., & Woodward, D. E. (2002). "Managing Smile Risk." *Wilmott Magazine*.
-
-
-## **Contact Information**
-For any inquiries or contributions, feel free to reach out:
-
+## 📩 **Contact Information**
 👤 **Author**: Evangelos Niklitsiotis  
 📧 **Email**: vagelisnikli@gmail.com  
+
 
 
 
