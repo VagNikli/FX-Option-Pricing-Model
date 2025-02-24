@@ -28,12 +28,12 @@ The **Black-Scholes formula** is used to price European options:
 - $P = K e^{-r_d T} N(-d_2) - S_0 e^{-r_f T} N(-d_1)$
 
 where:
-$d_1 = \frac{\ln(S_0 / K) + (r_d - r_f + \frac{1}{2} \sigma^2) T}{\sigma \sqrt{T}}$
+$d_1 = \frac{\ln(S_0 / K) + (r_d - r_f + \frac{1}{2} \sigma^2) T}{\sigma \sqrt{T}}$, 
 $d_2 = d_1 - \sigma \sqrt{T}$
 
 where:  
 - $C, P$ = Call and Put option price  
-- $ S_0$ = Spot price of the underlying asset  
+- $S_0$ = Spot price of the underlying asset  
 - $K$ = Strike price  
 - $T$ = Time to expiration  
 - $r_d$ = Domestic risk-free rate  
@@ -47,21 +47,14 @@ where:
 The **binomial model** builds a **lattice** of possible price evolutions:
 
 - At each step, the price can **go up** $( u $) or **down** $(d$):
+  - $S_u = S_0 \cdot u, \quad S_d = S_0 \cdot d$
 
-$
-S_u = S_0 \cdot u, \quad S_d = S_0 \cdot d
-$
-
-- Risk-neutral probability:
-
-$
-q = \frac{e^{(r_d - r_f) \Delta t} - d}{u - d}
-$
+- Risk-neutral probability: $q = \frac{e^{(r_d - r_f) \Delta t} - d}{u - d}$
 
 where:
-- $ \Delta t = \frac{T}{n} $ (time step per period)
-- $u = e^{\sigma \sqrt{\Delta t}} $
-- $ d = \frac{1}{u} $
+- $\Delta t = \frac{T}{n}$ (time step per period)
+- $u = e^{\sigma \sqrt{\Delta t}}$
+- $d = \frac{1}{u}$
 
 For **barrier options**, we apply the following conditions:
 - **Knock-In**: Becomes active if the barrier is reached.
@@ -69,15 +62,11 @@ For **barrier options**, we apply the following conditions:
 
 At expiration, payoffs are:
 
-$
-V_T = \max(S_T - K, 0) \quad \text{(for call)}
-$
+- $V_T = \max(S_T - K, 0) \quad \text{(for call)}$
 
-$
-V_T = \max(K - S_T, 0) \quad \text{(for put)}
-$
+- $V_T = \max(K - S_T, 0) \quad \text{(for put)}$
 
-For **knock-out options**, if at any step $ S_t $ crosses the barrier $ B $, the option value is set to **zero**.
+For **knock-out options**, if at any step $S_t$ crosses the barrier $B$, the option value is set to **zero**.
 
 
 ### **3️. Vanna-Volga Pricing for FX Options**
