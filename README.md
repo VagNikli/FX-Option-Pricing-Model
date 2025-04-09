@@ -21,7 +21,7 @@ This project provides an in-depth **FX options pricing framework**, implementing
 This project relies on well-established mathematical models for option pricing.
 
 ### **1️. Black-Scholes Model**
-The **Black-Scholes formula** is used to price European options:
+The **Black-Scholes formula** is used to price European FX options:
 
 - $C = S_0 e^{-r_f T} N(d_1) - K e^{-r_d T} N(d_2)$
 
