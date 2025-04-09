@@ -198,9 +198,7 @@ The **synthetic market data module** simulates **realistic FX implied volatility
 - **Vanna-Volga Method**: Castagna, A., & Mercurio, F. (2007). *International Journal of Theoretical and Applied Finance*.  
 - **SABR Model for Implied Volatility**: Hagan, P. S., Kumar, D., Lesniewski, A. S., & Woodward, D. E. (2002). *Wilmott Magazine*.
 
-## 📩 **Contact Information**
-👤 **Author**: Evangelos Niklitsiotis  
-📧 **Email**: vagelisnikli@gmail.com  
+
 
 
 
